@@ -18,12 +18,16 @@ if __name__ == '__main__':
                         help="path to save file", metavar="FILE", required=False)
     parser.add_argument("-t2v", "--save_target2v", dest="save_t2v",
                         help="path to save file", metavar="FILE", required=False)
+    parser.add_argument("-p2v", "--save_path2v", dest="save_p2v",
+                        help="path to save file", metavar="FILE", required=False)
     parser.add_argument("-l", "--load", dest="load_path",
                         help="path to save file", metavar="FILE", required=False)
     parser.add_argument('--save_w2v', dest='save_w2v', required=False,
                         help="save word (token) vectors in word2vec format")
     parser.add_argument('--save_t2v', dest='save_t2v', required=False,
                         help="save target vectors in word2vec format")
+    parser.add_argument('--save_p2v', dest='save_p2v', required=False,
+                        help="save paths vectors in word2vec format")
     parser.add_argument('--release', action='store_true',
                         help='if specified and loading a trained model, release the loaded model for a lower model '
                              'size.')
@@ -42,6 +46,9 @@ if __name__ == '__main__':
     if args.save_t2v is not None:
         model.save_word2vec_format(args.save_t2v, source=VocabType.Target)
         print('Target word vectors saved in word2vec text format in: %s' % args.save_t2v)
+    if args.save_p2v is not None:
+        model.save_word2vec_format(args.save_p2v, source=VocabType.Path)
+        print('Paths vectors saved in word2vec text format in: %s' % args.save_p2v)
     if config.TEST_PATH and not args.data_path:
         eval_results = model.evaluate()
         if eval_results is not None:
