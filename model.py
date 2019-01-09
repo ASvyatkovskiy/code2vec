@@ -443,7 +443,7 @@ class Model:
                 index = self.index_to_path
                 var_name = 'PATHS_VOCAB'
             else:
-                raise ValueError('vocab type should be VocabType.Token or VocabType.Target.')
+                raise ValueError('vocab type should be VocabType.Token, VocabType.Target, or VocabType.Path.')
             embeddings = tf.get_variable(var_name, shape=(vocab_size + 1, embedding_size), dtype=tf.float32,
                                          trainable=False)
             self.saver = tf.train.Saver()
