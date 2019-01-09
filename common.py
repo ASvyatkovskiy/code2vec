@@ -239,3 +239,4 @@ class PredictionResults:
 class VocabType(Enum):
     Token = 1
     Target = 2
+    Path = 3
